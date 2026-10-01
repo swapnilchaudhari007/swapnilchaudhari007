@@ -1,48 +1,101 @@
-# 👋 Hi, I'm Swapnil Chaudhari
+<div align="center">
 
-I'm a passionate **Software Engineer** with hands-on experience in building dynamic web applications and robust backend systems. I love tackling real-world problems with technology, writing clean code, and learning new frameworks and languages.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=180&section=header&text=Swapnil%20Chaudhari&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Software%20Engineer%20%E2%80%A2%20Backend%20%E2%80%A2%20AI%20%26%20Cloud%20Builder&descAlignY=58&descSize=16" width="100%"/>
 
-## 🚀 Tech Stack
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+4+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
 
-- **Languages:**  
-  ![PHP](https://img.shields.io/badge/-PHP-777bb4?logo=php&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/-JavaScript-f7df1e?logo=javascript&logoColor=black)
-  ![C](https://img.shields.io/badge/-C-00599C?logo=c&logoColor=white)
-  ![C#](https://img.shields.io/badge/-C%23-239120?logo=c-sharp&logoColor=white)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/swapnilchaudhari007/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sc29823@gmail.com)
+![Profile views](https://komarev.com/ghpvc/?username=swapnilchaudhari007&style=for-the-badge&color=2c5364&label=PROFILE+VIEWS)
 
-- **Frameworks & Platforms:**  
-  ![ASP.NET](https://img.shields.io/badge/-ASP.NET-512BD4?logo=.net&logoColor=white)
-  ![WordPress](https://img.shields.io/badge/-WordPress-21759B?logo=wordpress&logoColor=white)
-
-- **Frontend:**  
-  ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
-  ![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?logo=bootstrap&logoColor=white)
-
-- **Dev Tools:**  
-  ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)
-  ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white)
-  ![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
-
-## 🛠️ What I Do
-
-- Build and maintain full-stack web applications using **PHP**, **JavaScript**, and **ASP.NET**
-- Develop custom themes and plugins for **WordPress**
-- Create RESTful APIs and microservices
-- Write clean, efficient code in **C** and **C#**
-- Collaborate using modern version control workflows
-
-## 🌱 Currently Learning
-
-- Cloud deployment and serverless architectures
-- Modern JavaScript frameworks (React, Vue)
-- Advanced .NET technologies
-
-## 📫 Let's Connect
-
-- [LinkedIn](https://www.linkedin.com/in/swapnilchaudhari007/)
-- [Email](mailto:your.email@example.com)
+</div>
 
 ---
 
-> “Code is like humor. When you have to explain it, it’s bad.” – Cory House
+### 👨‍💻 About Me
+
+Software Engineer from **Thane, India** with a strong backend foundation in **C#, ASP.NET, C/C++ and SQL**, now shipping **AI and cloud-native products** — from voice assistants on AWS to computer-vision safety systems and mixed-reality apps.
+
+- 🔭 Building production-style hackathon projects across **AI, AWS, mobile and XR**
+- 🧠 Exploring **LLMs, MCP servers, computer vision** and serverless architectures
+- ⚙️ Day-to-day: APIs, databases, Linux, and clean, maintainable backend code
+- 🤝 Open to **backend / full-stack / AI engineering** opportunities
+
+---
+
+### 🚀 Featured Projects
+
+| Project | What it does | Stack |
+|---|---|---|
+| 🩺 **[CareCircle](https://github.com/swapnilchaudhari007/carecircle-mcp)** | Alexa+ MCP server for elder medication care — voice dose logging, double-dose guard, family alerts, multilingual digests | TypeScript · AWS Bedrock · Lambda · DynamoDB · SNS |
+| 🦺 **[SafetyEye](https://github.com/swapnilchaudhari007/safetyeye)** | AI PPE & hazard monitor for worksites — helmet/vest detection, restricted zones, fall detection, multilingual alerts | Python · YOLO11 · FastAPI |
+| 🥽 **[PinchPlan](https://github.com/swapnilchaudhari007/pinchplan)** | Hands-first mixed-reality focus desk for Meta Quest | WebXR · JavaScript |
+| 🎮 **[QuestLog](https://github.com/swapnilchaudhari007/questlog)** | Your gaming bucket list, gamified — with in-app subscriptions | TypeScript · Expo · RevenueCat |
+
+---
+
+### 🛠️ Tech Stack
+
+**Languages**
+
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+
+**Backend & Frameworks**
+
+![.NET](https://img.shields.io/badge/ASP.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![WordPress](https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white)
+
+**Frontend & Mobile**
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![WebXR](https://img.shields.io/badge/WebXR-1C1E21?style=for-the-badge&logo=meta&logoColor=white)
+
+**Databases & Cloud**
+
+![MS SQL](https://img.shields.io/badge/MS%20SQL-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white)
+![DynamoDB](https://img.shields.io/badge/DynamoDB-4053D6?style=for-the-badge&logo=amazondynamodb&logoColor=white)
+
+**AI & Tools**
+
+![YOLO](https://img.shields.io/badge/YOLO11-111F68?style=for-the-badge&logo=ultralytics&logoColor=white)
+![Amazon Bedrock](https://img.shields.io/badge/Bedrock-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+
+---
+
+### 📊 GitHub Activity
+
+<div align="center">
+
+<img src="https://github-readme-streak-stats.herokuapp.com?user=swapnilchaudhari007&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=swapnilchaudhari007&theme=tokyo-night&hide_border=true&area=true" width="100%" alt="Activity Graph" />
+
+</div>
+
+---
+
+<div align="center">
+
+💬 **Let's build something together — reach out on [LinkedIn](https://www.linkedin.com/in/swapnilchaudhari007/) or [email](mailto:sc29823@gmail.com).**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=100&section=footer" width="100%"/>
+
+</div>
