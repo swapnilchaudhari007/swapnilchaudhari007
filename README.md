@@ -3,7 +3,7 @@
 <h1>Hi 👋, I'm Swapnil Chaudhari</h1>
 <h3>Software Engineer • Backend • AI &amp; Cloud Builder</h3>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+4+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+5+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/swapnilchaudhari007/)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sc29823@gmail.com)
@@ -32,6 +32,7 @@ Software Engineer from **Thane, India** with a strong backend foundation in **C#
 | 🦺 **[SafetyEye](https://github.com/swapnilchaudhari007/safetyeye)** | AI PPE & hazard monitor for worksites — helmet/vest detection, restricted zones, fall detection, multilingual alerts | Python · YOLO11 · FastAPI |
 | 🥽 **[PinchPlan](https://github.com/swapnilchaudhari007/pinchplan)** | Hands-first mixed-reality focus desk for Meta Quest | WebXR · JavaScript |
 | 🎮 **[QuestLog](https://github.com/swapnilchaudhari007/questlog)** | Your gaming bucket list, gamified — with in-app subscriptions | TypeScript · Expo · RevenueCat |
+| 🏘️ **[SocietyMitra](https://github.com/swapnilchaudhari007/societymitra)** | AI co-secretary for housing societies — an AI agent built on NVIDIA Nemotron via Nebius Token Factory | Python · NVIDIA Nemotron · Nebius · Tavily |
 
 ---
 
