@@ -5,7 +5,7 @@
 
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+5+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/swapnilchaudhari007/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/swapnil-chaudhari-533a25105/)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sc29823@gmail.com)
 ![Profile views](https://komarev.com/ghpvc/?username=swapnilchaudhari007&style=for-the-badge&color=2c5364&label=PROFILE+VIEWS)
 
@@ -94,6 +94,6 @@ Software Engineer from **Thane, India** with a strong backend foundation in **C#
 
 <div align="center">
 
-💬 **Let's build something together — reach out on [LinkedIn](https://www.linkedin.com/in/swapnilchaudhari007/) or [email](mailto:sc29823@gmail.com).**
+💬 **Let's build something together — reach out on [LinkedIn](https://www.linkedin.com/in/swapnil-chaudhari-533a25105/) or [email](mailto:sc29823@gmail.com).**
 
 </div>
