@@ -1,3 +1,9 @@
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="light_mode.svg" />
+  <img alt="Swapnilchaudhari007's GitHub profile" src="dark_mode.svg" />
+</picture>
+
 <div align="center">
 
 <h1>Hi 👋, I'm Swapnil Chaudhari</h1>
