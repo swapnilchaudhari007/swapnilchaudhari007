@@ -48,6 +48,32 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+# ------------------------------------------------------------------ motion (SMIL; base state is always the final, fully visible frame)
+EASE = 'calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"'
+
+
+def bob(dy=6, dur=6, begin=0):
+    return (f'<animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 {-dy};0 0" '
+            f'keyTimes="0;.5;1" dur="{dur}s" begin="{begin:.2f}s" repeatCount="indefinite" {EASE}/>')
+
+
+def enter(delay=0.0, dy=14, dur=0.8):
+    T = delay + dur
+    k = delay / T
+    return (f'<animate attributeName="opacity" values="0;0;1" keyTimes="0;{k:.3f};1" dur="{T:.2f}s" fill="remove"/>'
+            f'<animateTransform attributeName="transform" type="translate" additive="sum" values="0 {dy};0 {dy};0 0" '
+            f'keyTimes="0;{k:.3f};1" dur="{T:.2f}s" calcMode="spline" keySplines="0 0 1 1;.2 .7 .2 1" fill="remove"/>')
+
+
+def shine_gradient(gid, dur=5, begin=0, peak=.5):
+    return (f'<linearGradient id="{gid}" x1="0" y1="0" x2="1" y2=".35">'
+            f'<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/>'
+            f'<stop offset=".5" stop-color="#fff" stop-opacity="{peak}"/><stop offset=".58" stop-color="#fff" stop-opacity="0"/>'
+            f'<stop offset="1" stop-color="#fff" stop-opacity="0"/>'
+            f'<animateTransform attributeName="gradientTransform" type="translate" values="-1 0;1 0;1 0" keyTimes="0;.45;1" '
+            f'dur="{dur}s" begin="{begin}s" repeatCount="indefinite"/></linearGradient>')
+
+
 # ------------------------------------------------------------------ data
 def fetch_live():
     token = os.environ["GITHUB_TOKEN"]
@@ -87,16 +113,17 @@ def stats(days):
 
 
 # ------------------------------------------------------------------ hero
-def iso_slab(cx, cy, a, t, top, left, right, edge, extra="", cls=""):
+def iso_slab(cx, cy, a, t, top, left, right, edge, extra="", anim="", shine=None):
     b = a / 2
     T = [(cx, cy - b), (cx + a, cy), (cx, cy + b), (cx - a, cy)]
     L = [(cx - a, cy), (cx, cy + b), (cx, cy + b + t), (cx - a, cy + t)]
     R = [(cx, cy + b), (cx + a, cy), (cx + a, cy + t), (cx, cy + b + t)]
-    return (f'<g class="{cls}">'
+    sh = f'<polygon points="{pts(T)}" fill="url(#{shine})"/>' if shine else ""
+    return (f'<g>{anim}'
             f'<polygon points="{pts(L)}" fill="{left}"/>'
             f'<polygon points="{pts(R)}" fill="{right}"/>'
             f'<polygon points="{pts(T)}" fill="{top}" stroke="{edge}" stroke-width="1"/>'
-            f'{extra}</g>')
+            f'{sh}{extra}</g>')
 
 
 def iso_box(x, y, s, h, color):
@@ -128,12 +155,8 @@ def hero(theme):
          '<mask id="m"><rect width="100%" height="100%" fill="url(#fade)"/></mask>',
          f'<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>',
          '<clipPath id="r"><rect width="1200" height="380" rx="20"/></clipPath>',
+         shine_gradient("shA", 5, 1.0, .55), shine_gradient("shB", 5, 1.25, .35), shine_gradient("shC", 5, 1.5, .25),
          "</defs>",
-         "<style>"
-         ".f1{animation:fl 6s ease-in-out infinite}.f2{animation:fl 6s ease-in-out .6s infinite}.f3{animation:fl 6s ease-in-out 1.2s infinite}"
-         "@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}"
-         ".pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{0%,100%{opacity:1}50%{opacity:.35}}"
-         "</style>",
          '<g clip-path="url(#r)">',
          f'<rect width="{W}" height="{H}" fill="url(#bg)"/>',
          f'<rect width="{W}" height="{H}" fill="url(#dots)" mask="url(#m)"/>',
@@ -144,8 +167,8 @@ def hero(theme):
     cx, a, th = 930, 150, 16
     edge = "rgba(255,255,255,0.45)" if dark else "rgba(255,255,255,0.9)"
     o.append(f'<ellipse cx="{cx}" cy="335" rx="190" ry="26" fill="{t["shadow"]}" opacity="{.55 if dark else .18}" filter="url(#soft)"/>')
-    o.append(iso_slab(cx, 262, a, th, "url(#topC)", "#312e81", "#164e63", edge, cls="f3"))
-    o.append(iso_slab(cx, 196, a, th, "url(#topB)", "#3730a3", "#155e75", edge, cls="f2"))
+    o.append(iso_slab(cx, 262, a, th, "url(#topC)", "#312e81", "#164e63", edge, anim=bob(7, 6, 1.2), shine="shC"))
+    o.append(iso_slab(cx, 196, a, th, "url(#topB)", "#3730a3", "#155e75", edge, anim=bob(7, 6, .6), shine="shB"))
     # skyline of small cubes on top slab
     cubes = []
     s = 22
@@ -157,21 +180,29 @@ def hero(theme):
             gx = cx + (i - j) * s * 1.25
             gy = 130 - a / 2 + 30 + (i + j) * s * 0.62
             cubes.append((gy, gx, heights[i][j], cols[(i + j) % 3]))
-    sky = "".join(iso_box(gx, gy - 4, 16, h, c) for gy, gx, h, c in sorted(cubes))
-    o.append(iso_slab(cx, 130, a, th, "url(#topA)", "#4338ca", "#0e7490", edge, extra=sky, cls="f1"))
-    # connector beams
+    sky = "".join(f'<g>{bob(4, 2.8, .9 + k * .23)}{iso_box(gx, gy - 4, 16, h, c)}</g>'
+                  for k, (gy, gx, h, c) in enumerate(sorted(cubes)))
+    o.append(iso_slab(cx, 130, a, th, "url(#topA)", "#4338ca", "#0e7490", edge, extra=sky, anim=bob(7, 6, 0), shine="shA"))
+    # rising particles
+    for k, (px, py, r, col, dur, b0) in enumerate([(780, 300, 2.2, "#22d3ee", 5.5, 0), (840, 330, 1.6, "#a5b4fc", 6.5, 1.4),
+                                                   (1030, 320, 2, "#67e8f9", 6, .8), (1095, 280, 1.5, "#c7d2fe", 7, 2.2),
+                                                   (990, 350, 1.8, "#818cf8", 5, 3), (870, 260, 1.4, "#22d3ee", 6.8, 3.6)]):
+        o.append(f'<circle cx="{px}" cy="{py}" r="{r}" fill="{col}" opacity="0">'
+                 f'<animate attributeName="cy" values="{py};{py - 170}" dur="{dur}s" begin="{b0}s" repeatCount="indefinite"/>'
+                 f'<animate attributeName="opacity" values="0;.9;0" dur="{dur}s" begin="{b0}s" repeatCount="indefinite"/></circle>')
     # --- text block
     x = 64
     o += [
-        f'<g class="in"><rect x="{x}" y="70" width="318" height="30" rx="15" fill="{t["chip"]}" stroke="{t["chipb"]}"/>'
-        f'<circle class="pulse" cx="{x + 18}" cy="85" r="4.5" fill="#22c55e"/>'
+        f'<g>{enter(.1)}<rect x="{x}" y="70" width="318" height="30" rx="15" fill="{t["chip"]}" stroke="{t["chipb"]}"/>'
+        f'<circle cx="{x + 18}" cy="85" r="4.5" fill="#22c55e" opacity=".5"><animate attributeName="r" values="4.5;11;11" keyTimes="0;.6;1" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;0" keyTimes="0;.6;1" dur="2.4s" repeatCount="indefinite"/></circle>'
+        f'<circle cx="{x + 18}" cy="85" r="4.5" fill="#22c55e"/>'
         f'<text x="{x + 32}" y="90" font-family="{FONT}" font-size="13" font-weight="600" letter-spacing="1.4" fill="{t["muted"]}">SENIOR SOFTWARE DEVELOPER</text></g>',
-        f'<text class="in d1" x="{x - 3}" y="168" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" fill="url(#name)">Swapnil Chaudhari</text>',
-        f'<text class="in d2" x="{x}" y="212" font-family="{FONT}" font-size="22" fill="{t["muted"]}">Backend engineer shipping <tspan fill="{t["accent"]}" font-weight="600">AI</tspan> &amp; <tspan fill="{t["accent2"]}" font-weight="600">cloud</tspan> products.</text>',
+        f'<g>{enter(.25)}<text x="{x - 3}" y="168" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" fill="url(#name)">Swapnil Chaudhari</text></g>',
+        f'<g>{enter(.4)}<text x="{x}" y="212" font-family="{FONT}" font-size="22" fill="{t["muted"]}">Backend engineer shipping <tspan fill="{t["accent"]}" font-weight="600">AI</tspan> &amp; <tspan fill="{t["accent2"]}" font-weight="600">cloud</tspan> products.</text></g>',
     ]
     chips = ["C# / .NET", "SQL", "Python", "AWS", "LLMs · MCP"]
     cxp = x
-    g = ['<g class="in d3">']
+    g = [f'<g>{enter(.55)}']
     for c in chips:
         w = 18 + len(c) * 8.6
         g.append(f'<rect x="{cxp}" y="246" width="{w:.0f}" height="34" rx="9" fill="{t["chip"]}" stroke="{t["chipb"]}"/>'
@@ -179,7 +210,7 @@ def hero(theme):
         cxp += w + 10
     g.append("</g>")
     o += g
-    o.append(f'<text class="in d4" x="{x}" y="318" font-family="{FONT}" font-size="15" fill="{t["faint"]}">Thane, India  ·  Bajaj Group  ·  Open to backend / AI engineering roles</text>')
+    o.append(f'<g>{enter(.7)}<text x="{x}" y="318" font-family="{FONT}" font-size="15" fill="{t["faint"]}">Thane, India  ·  Bajaj Group  ·  Open to backend / AI engineering roles</text></g>')
     o.append(f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="20" fill="none" stroke="{t["border"]}"/>')
     o.append("</g></svg>")
     return "\n".join(o)
@@ -207,7 +238,6 @@ def contrib(theme, days, st):
          f'<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"] * .6:.2f}"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient>',
          '<clipPath id="r"><rect width="1200" height="520" rx="20"/></clipPath>',
          "</defs>",
-         "<style>.b{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:1}50%{opacity:.82}}</style>",
          '<g clip-path="url(#r)">',
          f'<rect width="{W}" height="{H}" fill="url(#bg)"/>',
          '<circle cx="860" cy="300" r="320" fill="url(#glow)"/>',
@@ -231,7 +261,7 @@ def contrib(theme, days, st):
         col, row = i % 2, i // 2
         w = 148 if i < 4 else 306
         tx, yy = x + col * 158, ty + row * 92
-        o.append(f'<g class="in" style="animation-delay:{.1 * i:.1f}s"><rect x="{tx}" y="{yy}" width="{w}" height="80" rx="14" fill="{t["card"]}" fill-opacity="{.7 if dark else .9}" stroke="{t["border"]}"/>'
+        o.append(f'<g>{enter(.15 + .1 * i)}<rect x="{tx}" y="{yy}" width="{w}" height="80" rx="14" fill="{t["card"]}" fill-opacity="{.7 if dark else .9}" stroke="{t["border"]}"/>'
                  f'<text x="{tx + 16}" y="{yy + 28}" font-family="{FONT}" font-size="13" fill="{t["muted"]}">{label}</text>'
                  f'<text x="{tx + 16}" y="{yy + 62}" font-family="{FONT}" font-size="28" font-weight="700" fill="{t["fg"]}">{val}'
                  + (f'<tspan font-size="14" font-weight="500" fill="{t["faint"]}" dx="6">{unit}</tspan>' if unit else "") + "</text></g>")
@@ -267,14 +297,22 @@ def contrib(theme, days, st):
         left = [up(p0), up(pd), pd, p0]
         right = [up(pd), up(pwd), pwd, pd]
         lf, rf = (.78, .58) if dark else (.86, .70)
-        if c:
-            o.append(f'<g class="b" style="transform-origin:{pd[0]:.1f}px {pd[1]:.1f}px;animation-delay:{.25 + wk * .012:.2f}s">'
-                     f'<title>{c} contribution{"s" if c != 1 else ""} on {d:%b %d, %Y}</title>')
-        else:
-            o.append("<g>")
-        o.append(f'<polygon points="{pts(left)}" fill="{shade(col, lf)}"/>'
+        faces = (f'<polygon points="{pts(left)}" fill="{shade(col, lf)}"/>'
                  f'<polygon points="{pts(right)}" fill="{shade(col, rf)}"/>'
-                 f'<polygon points="{pts(top)}" fill="{col}"/></g>')
+                 f'<polygon points="{pts(top)}" fill="{col}"/>')
+        if c:
+            # grow from the floor: scale around the bar's front-bottom corner
+            delay = .4 + wk * .018
+            T = delay + 1.1
+            k = delay / T
+            ax, ay = pd
+            o.append(f'<g transform="translate({ax:.1f} {ay:.1f})"><g>'
+                     f'<title>{c} contribution{"s" if c != 1 else ""} on {d:%b %d, %Y}</title>'
+                     f'<animateTransform attributeName="transform" type="scale" values="1 0.01;1 0.01;1 1" keyTimes="0;{k:.3f};1" '
+                     f'dur="{T:.2f}s" calcMode="spline" keySplines="0 0 1 1;.2 .8 .25 1" fill="remove"/>'
+                     f'<g transform="translate({-ax:.1f} {-ay:.1f})">{faces}</g></g></g>')
+        else:
+            o.append(faces)
     # month labels along the front edge (dow = 6)
     seen = set()
     for d, _ in days:

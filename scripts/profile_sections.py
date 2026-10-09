@@ -2,7 +2,7 @@
 
 Shares the design tokens of build_profile_svgs.py so every section looks like one system.
 """
-from build_profile_svgs import THEMES, FONT, MONO, shade, pts, esc
+from build_profile_svgs import THEMES, FONT, MONO, shade, pts, esc, bob, enter, shine_gradient
 
 # ------------------------------------------------------------------ content
 ABOUT = dict(
@@ -84,7 +84,6 @@ def frame(theme, W, H, glow_xy=(0.8, 0.4), body="", label=""):
         f'<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="{t["faint"]}" fill-opacity="{.28 if dark else .38}"/></pattern>',
         f'<clipPath id="r"><rect width="{W}" height="{H}" rx="20"/></clipPath>',
         "</defs>",
-        "<style>.fl{animation:fl 6s ease-in-out infinite}@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}</style>",
         '<g clip-path="url(#r)">',
         f'<rect width="{W}" height="{H}" fill="url(#bg)"/>',
         f'<circle cx="{W * gx:.0f}" cy="{H * gy:.0f}" r="{max(W, H) * .32:.0f}" fill="url(#glow)"/>',
@@ -111,21 +110,30 @@ def eyebrow(theme, x, y, s):
     return f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="14" font-weight="700" letter-spacing="1.8" fill="{t["accent"]}">{esc(s.upper())}</text>'
 
 
-def keycap(t, x, y, label, dot=None, size=16, pad=18, h=42, mono=False, dark=True):
+def keycap(t, x, y, label, dot=None, size=16, pad=18, h=42, mono=False, dark=True, press=None):
     """3D keyboard-key chip. Returns (svg, width)."""
     tw = text_w(label, size, 600, mono)
     w = tw + pad * 2 + (18 if dot else 0)
     depth = 6
     face0 = t["chip"]
     edge = shade(t["chipb"], .75 if dark else .82)
+    anim = ""
+    if press:  # (offset seconds, cycle seconds): key goes down and springs back once per cycle
+        off, cyc = press
+        a = off / cyc
+        e = .022
+        anim = (f'<animateTransform attributeName="transform" type="translate" additive="sum" '
+                f'values="0 0;0 0;0 {depth - 1};0 0;0 0" keyTimes="0;{a:.3f};{a + e:.3f};{a + 2.4 * e:.3f};1" '
+                f'dur="{cyc}s" repeatCount="indefinite"/>')
     s = [f'<rect x="{x}" y="{y + depth}" width="{w:.0f}" height="{h}" rx="10" fill="{edge}"/>',
+         f'<g>{anim}',
          f'<rect x="{x}" y="{y}" width="{w:.0f}" height="{h}" rx="10" fill="{face0}" stroke="{t["chipb"]}"/>',
          f'<rect x="{x + 6}" y="{y + 3}" width="{w - 12:.0f}" height="2" rx="1" fill="#ffffff" fill-opacity="{.08 if dark else .9}"/>']
     tx = x + pad
     if dot:
         s.append(f'<circle cx="{x + pad + 5}" cy="{y + h / 2}" r="5" fill="{dot}"/>')
         tx += 18
-    s.append(f'<text x="{tx:.1f}" y="{y + h / 2 + size * .36:.1f}" font-family="{MONO if mono else FONT}" font-size="{size}" font-weight="600" fill="{t["fg"]}">{esc(label)}</text>')
+    s.append(f'<text x="{tx:.1f}" y="{y + h / 2 + size * .36:.1f}" font-family="{MONO if mono else FONT}" font-size="{size}" font-weight="600" fill="{t["fg"]}">{esc(label)}</text></g>')
     return "".join(s), w
 
 
@@ -152,10 +160,11 @@ def about(theme):
     o.append(f'<rect x="{rx - 24}" y="44" width="500" height="382" rx="18" fill="{t["card"]}" fill-opacity="{.55 if dark else .75}" stroke="{t["border"]}"/>')
     for i, (col, label, desc) in enumerate(ABOUT["points"]):
         y = 76 + i * 88
-        o.append(f'<g class="fl" style="animation-delay:{i * .5:.1f}s">{cube(rx + 16, y, 16, col)}</g>')
-        o.append(f'<text x="{rx + 52}" y="{y + 16}" font-family="{FONT}" font-size="18" font-weight="700" fill="{t["fg"]}">{esc(label)}</text>')
+        o.append(f'<g>{bob(5, 5, i * .5)}{cube(rx + 16, y, 16, col)}</g>')
+        o.append(f'<g>{enter(.2 + i * .15, 10)}<text x="{rx + 52}" y="{y + 16}" font-family="{FONT}" font-size="18" font-weight="700" fill="{t["fg"]}">{esc(label)}</text>')
         for j, line in enumerate(wrap(desc, 16, 390)):
             o.append(f'<text x="{rx + 52}" y="{y + 42 + j * 22}" font-family="{FONT}" font-size="16" fill="{t["muted"]}">{esc(line)}</text>')
+        o.append('</g>')
     return frame(theme, W, H, (0.78, 0.5), "\n".join(o), "About Swapnil Chaudhari")
 
 
@@ -164,18 +173,22 @@ def project(theme, p):
     dark = theme == "dark"
     W, H = 600, 320
     a = p["accent"]
-    o = [f'<rect x="0" y="0" width="{W}" height="5" fill="{a}"/>']
+    o = [f'<defs>{shine_gradient("bar", 4, 0.5, .8)}</defs>',
+         f'<rect x="0" y="0" width="{W}" height="5" fill="{a}"/>',
+         f'<rect x="0" y="0" width="{W}" height="5" fill="url(#bar)"/>']
     # 3D icon: big cube + small floating cube
     o.append(f'<ellipse cx="68" cy="112" rx="34" ry="9" fill="#000" opacity="{.35 if dark else .12}"/>')
-    o.append(cube(68, 40, 30, a, 30))
-    o.append(f'<g class="fl">{cube(104, 30, 11, shade(a, 1.15) if dark else a)}</g>')
+    o.append(f'<g>{bob(3, 6, 0)}{cube(68, 40, 30, a, 30)}</g>')
+    o.append(f'<g>{bob(5, 3.2, .4)}{cube(104, 30, 11, shade(a, 1.15) if dark else a)}</g>')
     o.append(f'<text x="132" y="78" font-family="{FONT}" font-size="30" font-weight="800" letter-spacing="-.5" fill="{t["fg"]}">{esc(p["name"])}</text>')
     tag = p["tag"].upper()
     tw = text_w(tag, 12, 700) + 22
     o.append(f'<rect x="132" y="92" width="{tw:.0f}" height="24" rx="12" fill="{a}" fill-opacity="{.16 if dark else .12}" stroke="{a}" stroke-opacity=".45"/>'
              f'<text x="143" y="108" font-family="{FONT}" font-size="12" font-weight="700" letter-spacing="1" fill="{a if dark else shade(a, .7)}">{esc(tag)}</text>')
     # arrow
-    o.append(f'<g stroke="{t["muted"]}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M548 44 L566 26"/><path d="M552 26 H566 V40"/></g>')
+    o.append(f'<g stroke="{t["muted"]}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">'
+             '<animateTransform attributeName="transform" type="translate" values="0 0;0 0;4 -4;0 0" keyTimes="0;.6;.8;1" dur="2.6s" repeatCount="indefinite"/>'
+             '<path d="M548 44 L566 26"/><path d="M552 26 H566 V40"/></g>')
     for i, line in enumerate(wrap(p["desc"], 18, 520)[:3]):
         o.append(f'<text x="40" y="{158 + i * 27}" font-family="{FONT}" font-size="18" fill="{t["muted"]}">{esc(line)}</text>')
     x = 40
@@ -194,6 +207,7 @@ def stack(theme):
     o = [eyebrow(theme, x0, 72, "Tech stack"),
          f'<text x="{x0}" y="116" font-family="{FONT}" font-size="34" font-weight="800" letter-spacing="-.6" fill="{t["fg"]}">Tools I build with</text>']
     y = 156
+    kidx = 0
     for gi, (group, items) in enumerate(STACK):
         o.append(f'<text x="{x0}" y="{y + 27}" font-family="{FONT}" font-size="16" font-weight="700" fill="{t["muted"]}">{esc(group)}</text>')
         x = xl
@@ -202,7 +216,8 @@ def stack(theme):
             if x + w > W - 50:
                 x = xl
                 y += 62
-            k, w = keycap(t, x, y, label, dot=col, dark=dark)
+            k, w = keycap(t, x, y, label, dot=col, dark=dark, press=(1.0 + kidx * .16, 8))
+            kidx += 1
             o.append(k)
             x += w + 12
         y += 62
@@ -221,7 +236,7 @@ def cta(theme):
          f'<text x="56" y="162" font-family="{FONT}" font-size="18" fill="{t["muted"]}">Open to backend, full-stack and AI engineering roles · Thane, India (IST)</text>']
     # decorative cube cluster
     for i, (dx, dy, s, c) in enumerate([(1000, 60, 34, "#6366f1"), (1068, 96, 24, "#22d3ee"), (946, 112, 20, "#a78bfa")]):
-        o.append(f'<g class="fl" style="animation-delay:{i * .7:.1f}s">{cube(dx, dy, s, c)}</g>')
+        o.append(f'<g>{bob(5, 5, i * .7)}{cube(dx, dy, s, c)}</g>')
     return frame(theme, W, H, (0.85, 0.5), "\n".join(o), "Let's build something together")
 
 
@@ -235,6 +250,8 @@ def button(theme, label, color):
          f'<rect x="2" y="{depth + 1}" width="{W - 4}" height="{H - depth - 3}" rx="14" fill="{shade(color, .55)}"/>',
          f'<rect x="2" y="2" width="{W - 4}" height="{H - depth - 3}" rx="14" fill="url(#g)"/>',
          f'<rect x="12" y="5" width="{W - 24}" height="2" rx="1" fill="#fff" fill-opacity=".35"/>',
+         shine_gradient("s", 3.5, 0.8 if "Link" in label else 1.2, .45),
+         f'<rect x="2" y="2" width="{W - 4}" height="{H - depth - 3}" rx="14" fill="url(#s)"/>',
          f'<text x="{W / 2 - 8}" y="{(H - depth) / 2 + 7}" text-anchor="middle" font-family="{FONT}" font-size="19" font-weight="700" fill="#ffffff">{esc(label)}</text>',
          f'<g stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate({W / 2 + text_w(label, 19, 700) / 2 + 2},{(H - depth) / 2 - 8})"><path d="M0 12 L10 2"/><path d="M2 2 H10 V10"/></g>',
          "</svg>"]
@@ -248,7 +265,7 @@ def header(theme, kicker, title, sub):
          f'<text x="56" y="112" font-family="{FONT}" font-size="34" font-weight="800" letter-spacing="-.6" fill="{t["fg"]}">{esc(title)}</text>',
          f'<text x="56" y="144" font-family="{FONT}" font-size="17" fill="{t["muted"]}">{esc(sub)}</text>']
     for i, (dx, dy, s, c) in enumerate([(1060, 50, 26, "#fb7185"), (1110, 76, 18, "#f59e0b"), (1012, 82, 16, "#34d399")]):
-        o.append(f'<g class="fl" style="animation-delay:{i * .6:.1f}s">{cube(dx, dy, s, c)}</g>')
+        o.append(f'<g>{bob(5, 5, i * .6)}{cube(dx, dy, s, c)}</g>')
     return frame(theme, W, H, (0.9, 0.5), "\n".join(o), title)
 
 
