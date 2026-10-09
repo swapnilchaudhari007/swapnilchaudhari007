@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-label="About Swapnil Chaudhari">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b16"/><stop offset="1" stop-color="#0d1424"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#818cf8" stop-opacity="0.39"/><stop offset="1" stop-color="#818cf8" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#64748b" fill-opacity="0.28"/></pattern>
+<clipPath id="r"><rect width="1200" height="470" rx="20"/></clipPath>
+</defs>
+<style>.fl{animation:fl 6s ease-in-out infinite}@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}</style>
+<g clip-path="url(#r)">
+<rect width="1200" height="470" fill="url(#bg)"/>
+<circle cx="936" cy="235" r="384" fill="url(#glow)"/>
+<text x="56" y="72" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.8" fill="#22d3ee">ABOUT ME</text>
+<text x="56" y="118" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="-.6" fill="#f1f5f9">Backend roots. AI &amp; cloud ambitions.</text>
+<text x="56" y="168" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">Software engineer from Thane, India with a strong backend</text>
+<text x="56" y="198" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">foundation in C#, ASP.NET, C/C++ and SQL — now shipping AI and</text>
+<text x="56" y="228" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">cloud-native products, from voice assistants on AWS to</text>
+<text x="56" y="258" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">computer-vision safety systems and mixed-reality apps.</text>
+<rect x="56" y="330" width="180" height="84" rx="14" fill="#0b1220" fill-opacity="0.7" stroke="#1e293b"/><text x="74" y="370" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#f1f5f9">5</text><text x="74" y="396" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">projects shipped in 2026</text>
+<rect x="248.04000000000002" y="330" width="113" height="84" rx="14" fill="#0b1220" fill-opacity="0.7" stroke="#1e293b"/><text x="266.04" y="370" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#f1f5f9">2+ yrs</text><text x="266.04" y="396" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">on GitHub</text>
+<rect x="373.52" y="330" width="111" height="84" rx="14" fill="#0b1220" fill-opacity="0.7" stroke="#1e293b"/><text x="391.52" y="370" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#f1f5f9">Thane</text><text x="391.52" y="396" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">India · IST</text>
+<rect x="656" y="44" width="500" height="382" rx="18" fill="#0b1220" fill-opacity="0.55" stroke="#1e293b"/>
+<g class="fl" style="animation-delay:0.0s"><polygon points="680.0,84.0 696.0,92.0 696.0,108.0 680.0,100.0" fill="#1898ab"/><polygon points="696.0,92.0 712.0,84.0 712.0,100.0 696.0,108.0" fill="#126e7c"/><polygon points="696.0,76.0 712.0,84.0 696.0,92.0 680.0,84.0" fill="#22d3ee" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<text x="732" y="92" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#f1f5f9">Building</text>
+<text x="732" y="118" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">Production-style hackathon projects across AI, AWS,</text>
+<text x="732" y="140" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">mobile and XR</text>
+<g class="fl" style="animation-delay:0.5s"><polygon points="680.0,172.0 696.0,180.0 696.0,196.0 680.0,188.0" fill="#5d65b3"/><polygon points="696.0,180.0 712.0,172.0 712.0,188.0 696.0,196.0" fill="#434981"/><polygon points="696.0,164.0 712.0,172.0 696.0,180.0 680.0,172.0" fill="#818cf8" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<text x="732" y="180" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#f1f5f9">Exploring</text>
+<text x="732" y="206" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">LLMs, MCP servers, computer vision and serverless</text>
+<text x="732" y="228" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">architectures</text>
+<g class="fl" style="animation-delay:1.0s"><polygon points="680.0,260.0 696.0,268.0 696.0,284.0 680.0,276.0" fill="#25986e"/><polygon points="696.0,268.0 712.0,260.0 712.0,276.0 696.0,284.0" fill="#1b6e50"/><polygon points="696.0,252.0 712.0,260.0 696.0,268.0 680.0,260.0" fill="#34d399" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<text x="732" y="268" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#f1f5f9">Day to day</text>
+<text x="732" y="294" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">APIs, databases, Linux and clean, maintainable</text>
+<text x="732" y="316" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">backend code</text>
+<g class="fl" style="animation-delay:1.5s"><polygon points="680.0,348.0 696.0,356.0 696.0,372.0 680.0,364.0" fill="#b07208"/><polygon points="696.0,356.0 712.0,348.0 712.0,364.0 696.0,372.0" fill="#7f5206"/><polygon points="696.0,340.0 712.0,348.0 696.0,356.0 680.0,348.0" fill="#f59e0b" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<text x="732" y="356" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#f1f5f9">Open to</text>
+<text x="732" y="382" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="16" fill="#94a3b8">Backend, full-stack and AI engineering opportunities</text>
+<rect x=".5" y=".5" width="1199" height="469" rx="20" fill="none" stroke="#1e293b"/>
+</g></svg>

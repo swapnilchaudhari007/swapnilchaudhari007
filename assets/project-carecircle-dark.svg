@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="320" viewBox="0 0 600 320" role="img" aria-label="CareCircle — Alexa+ MCP server for elder medication care — voice dose logging, double-dose guard, family alerts and multilingual digests.">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b16"/><stop offset="1" stop-color="#0d1424"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#818cf8" stop-opacity="0.39"/><stop offset="1" stop-color="#818cf8" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#64748b" fill-opacity="0.28"/></pattern>
+<clipPath id="r"><rect width="600" height="320" rx="20"/></clipPath>
+</defs>
+<style>.fl{animation:fl 6s ease-in-out infinite}@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}</style>
+<g clip-path="url(#r)">
+<rect width="600" height="320" fill="url(#bg)"/>
+<circle cx="570" cy="32" r="192" fill="url(#glow)"/>
+<rect x="0" y="0" width="600" height="5" fill="#fb7185"/>
+<ellipse cx="68" cy="112" rx="34" ry="9" fill="#000" opacity="0.35"/>
+<polygon points="38.0,55.0 68.0,70.0 68.0,100.0 38.0,85.0" fill="#b55160"/><polygon points="68.0,70.0 98.0,55.0 98.0,85.0 68.0,100.0" fill="#833b45"/><polygon points="68.0,40.0 98.0,55.0 68.0,70.0 38.0,55.0" fill="#fb7185" stroke="rgba(255,255,255,.35)" stroke-width=".8"/>
+<g class="fl"><polygon points="93.0,35.5 104.0,41.0 104.0,52.0 93.0,46.5" fill="#b85e6e"/><polygon points="104.0,41.0 115.0,35.5 115.0,46.5 104.0,52.0" fill="#854450"/><polygon points="104.0,30.0 115.0,35.5 104.0,41.0 93.0,35.5" fill="#ff8299" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<text x="132" y="78" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="-.5" fill="#f1f5f9">CareCircle</text>
+<rect x="132" y="92" width="201" height="24" rx="12" fill="#fb7185" fill-opacity="0.16" stroke="#fb7185" stroke-opacity=".45"/><text x="143" y="108" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#fb7185">AMAZON DEVELOPER HACKATHON</text>
+<g stroke="#94a3b8" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M548 44 L566 26"/><path d="M552 26 H566 V40"/></g>
+<text x="40" y="158" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">Alexa+ MCP server for elder medication care — voice dose</text>
+<text x="40" y="185" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">logging, double-dose guard, family alerts and multilingual</text>
+<text x="40" y="212" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">digests.</text>
+<rect x="40" y="262" width="108" height="32" rx="10" fill="#1a253a"/><rect x="40" y="256" width="108" height="32" rx="10" fill="#111a2e" stroke="#23314d"/><rect x="46" y="259" width="96" height="2" rx="1" fill="#ffffff" fill-opacity="0.08"/><text x="52.0" y="277.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#f1f5f9">TypeScript</text>
+<rect x="156.0" y="262" width="83" height="32" rx="10" fill="#1a253a"/><rect x="156.0" y="256" width="83" height="32" rx="10" fill="#111a2e" stroke="#23314d"/><rect x="162.0" y="259" width="71" height="2" rx="1" fill="#ffffff" fill-opacity="0.08"/><text x="168.0" y="277.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#f1f5f9">Bedrock</text>
+<rect x="246.8" y="262" width="74" height="32" rx="10" fill="#1a253a"/><rect x="246.8" y="256" width="74" height="32" rx="10" fill="#111a2e" stroke="#23314d"/><rect x="252.8" y="259" width="62" height="2" rx="1" fill="#ffffff" fill-opacity="0.08"/><text x="258.8" y="277.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#f1f5f9">Lambda</text>
+<rect x="329.20000000000005" y="262" width="91" height="32" rx="10" fill="#1a253a"/><rect x="329.20000000000005" y="256" width="91" height="32" rx="10" fill="#111a2e" stroke="#23314d"/><rect x="335.20000000000005" y="259" width="79" height="2" rx="1" fill="#ffffff" fill-opacity="0.08"/><text x="341.2" y="277.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#f1f5f9">DynamoDB</text>
+<rect x="428.40000000000003" y="262" width="49" height="32" rx="10" fill="#1a253a"/><rect x="428.40000000000003" y="256" width="49" height="32" rx="10" fill="#111a2e" stroke="#23314d"/><rect x="434.40000000000003" y="259" width="37" height="2" rx="1" fill="#ffffff" fill-opacity="0.08"/><text x="440.4" y="277.0" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="14" font-weight="600" fill="#f1f5f9">SNS</text>
+<rect x=".5" y=".5" width="599" height="319" rx="20" fill="none" stroke="#1e293b"/>
+</g></svg>

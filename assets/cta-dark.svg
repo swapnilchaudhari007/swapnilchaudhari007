@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-label="Let's build something together">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b16"/><stop offset="1" stop-color="#0d1424"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#818cf8" stop-opacity="0.39"/><stop offset="1" stop-color="#818cf8" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#64748b" fill-opacity="0.28"/></pattern>
+<clipPath id="r"><rect width="1200" height="220" rx="20"/></clipPath>
+</defs>
+<style>.fl{animation:fl 6s ease-in-out infinite}@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}</style>
+<g clip-path="url(#r)">
+<rect width="1200" height="220" fill="url(#bg)"/>
+<circle cx="1020" cy="110" r="384" fill="url(#glow)"/>
+<text x="56" y="76" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.8" fill="#22d3ee">GET IN TOUCH</text>
+<text x="56" y="124" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="-.6" fill="#f1f5f9">Let’s build something together.</text>
+<text x="56" y="162" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#94a3b8">Open to backend, full-stack and AI engineering roles · Thane, India (IST)</text>
+<g class="fl" style="animation-delay:0.0s"><polygon points="966.0,77.0 1000.0,94.0 1000.0,128.0 966.0,111.0" fill="#4749ae"/><polygon points="1000.0,94.0 1034.0,77.0 1034.0,111.0 1000.0,128.0" fill="#33357d"/><polygon points="1000.0,60.0 1034.0,77.0 1000.0,94.0 966.0,77.0" fill="#6366f1" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<g class="fl" style="animation-delay:0.7s"><polygon points="1044.0,108.0 1068.0,120.0 1068.0,144.0 1044.0,132.0" fill="#1898ab"/><polygon points="1068.0,120.0 1092.0,108.0 1092.0,132.0 1068.0,144.0" fill="#126e7c"/><polygon points="1068.0,96.0 1092.0,108.0 1068.0,120.0 1044.0,108.0" fill="#22d3ee" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<g class="fl" style="animation-delay:1.4s"><polygon points="926.0,122.0 946.0,132.0 946.0,152.0 926.0,142.0" fill="#7864b4"/><polygon points="946.0,132.0 966.0,122.0 966.0,142.0 946.0,152.0" fill="#574882"/><polygon points="946.0,112.0 966.0,122.0 946.0,132.0 926.0,122.0" fill="#a78bfa" stroke="rgba(255,255,255,.35)" stroke-width=".8"/></g>
+<rect x=".5" y=".5" width="1199" height="219" rx="20" fill="none" stroke="#1e293b"/>
+</g></svg>
