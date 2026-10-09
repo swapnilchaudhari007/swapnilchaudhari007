@@ -132,8 +132,6 @@ def hero(theme):
          "<style>"
          ".f1{animation:fl 6s ease-in-out infinite}.f2{animation:fl 6s ease-in-out .6s infinite}.f3{animation:fl 6s ease-in-out 1.2s infinite}"
          "@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}"
-         ".in{animation:in .9s cubic-bezier(.2,.7,.2,1) both}.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}"
-         "@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}"
          ".pulse{animation:p 2.4s ease-in-out infinite}@keyframes p{0%,100%{opacity:1}50%{opacity:.35}}"
          "</style>",
          '<g clip-path="url(#r)">',
@@ -209,8 +207,7 @@ def contrib(theme, days, st):
          f'<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="{t["accent"]}" stop-opacity="{t["glow"] * .6:.2f}"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient>',
          '<clipPath id="r"><rect width="1200" height="520" rx="20"/></clipPath>',
          "</defs>",
-         "<style>.b{animation:g 1.1s cubic-bezier(.2,.8,.2,1) both}@keyframes g{from{transform:scaleY(.02)}to{transform:scaleY(1)}}"
-         ".in{animation:in .8s ease-out both}@keyframes in{from{opacity:0}to{opacity:1}}</style>",
+         "<style>.b{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:1}50%{opacity:.82}}</style>",
          '<g clip-path="url(#r)">',
          f'<rect width="{W}" height="{H}" fill="url(#bg)"/>',
          '<circle cx="860" cy="300" r="320" fill="url(#glow)"/>',
