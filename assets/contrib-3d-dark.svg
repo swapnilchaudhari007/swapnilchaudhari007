@@ -4,7 +4,7 @@
 <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#22d3ee" stop-opacity="0.33"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
 <clipPath id="r"><rect width="1200" height="520" rx="20"/></clipPath>
 </defs>
-<style>.b{animation:g 1.1s cubic-bezier(.2,.8,.2,1) both}@keyframes g{from{transform:scaleY(.02)}to{transform:scaleY(1)}}.in{animation:in .8s ease-out both}@keyframes in{from{opacity:0}to{opacity:1}}</style>
+<style>.b{animation:sh 4s ease-in-out infinite}@keyframes sh{0%,100%{opacity:1}50%{opacity:.82}}</style>
 <g clip-path="url(#r)">
 <rect width="1200" height="520" fill="url(#bg)"/>
 <circle cx="860" cy="300" r="320" fill="url(#glow)"/>
