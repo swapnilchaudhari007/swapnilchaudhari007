@@ -6,6 +6,12 @@
 
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=220&section=header&text=Swapnil%20Chaudhari&fontSize=56&fontColor=ffffff&fontAlignY=38&desc=Backend%20%E2%80%A2%20AI%20%E2%80%A2%20Cloud&descAlignY=58&descSize=20&animation=twinkling&textBg=false" alt="Header" width="100%" />
+
+</div>
+
+<div align="center">
+
 <h1>Hi 👋, I'm Swapnil Chaudhari</h1>
 <h3>Software Engineer • Backend • AI &amp; Cloud Builder</h3>
 
@@ -92,6 +98,12 @@ Software Engineer from **Thane, India** with a strong backend foundation in **C#
 
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile-3d-contrib/profile-night-rainbow.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="profile-3d-contrib/profile-gitblock.svg" />
+  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Contribution Graph" />
+</picture>
+
 <img src="https://github-readme-streak-stats.herokuapp.com?user=swapnilchaudhari007&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 
 </div>
@@ -103,3 +115,5 @@ Software Engineer from **Thane, India** with a strong backend foundation in **C#
 💬 **Let's build something together — reach out on [LinkedIn](https://www.linkedin.com/in/swapnil-chaudhari-533a25105/) or [email](mailto:sc29823@gmail.com).**
 
 </div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer" alt="Footer" width="100%" />
