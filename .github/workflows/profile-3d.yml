@@ -1,4 +1,4 @@
-name: GitHub-Profile-3D-Contrib
+name: Profile 3D assets
 
 on:
   schedule:
@@ -11,18 +11,18 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v4
-      - uses: yoshi389111/github-profile-3d-contrib@v0.9.3
+      - name: Build hero + 3D contribution SVGs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
-      - name: Commit & Push
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: python3 scripts/build_profile_svgs.py
+      - name: Commit & push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A .
-          if git commit -m "chore: update 3D contribution graph"; then
+          git add assets
+          if git commit -m "chore: refresh profile 3D assets"; then
             git push
           fi
