@@ -8,9 +8,16 @@ on:
 permissions:
   contents: write
 
+# never let two refreshes race each other on push
+concurrency:
+  group: profile-3d
+  cancel-in-progress: true
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # pinned: ubuntu-latest moves to Ubuntu 26 from 19 Oct 2026
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Build hero + 3D contribution SVGs
