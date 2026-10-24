@@ -3,6 +3,7 @@
 Shares the design tokens of build_profile_svgs.py so every section looks like one system.
 """
 from build_profile_svgs import THEMES, FONT, MONO, shade, pts, esc, bob, enter, shine_gradient
+from poly3d import solid
 
 # ------------------------------------------------------------------ content
 ABOUT = dict(
@@ -20,19 +21,19 @@ ABOUT = dict(
 )
 
 PROJECTS = [
-    dict(slug="carecircle", repo="carecircle-mcp", name="CareCircle", accent="#fb7185", tag="Amazon Developer Hackathon",
+    dict(slug="carecircle", shape="octa", repo="carecircle-mcp", name="CareCircle", accent="#fb7185", tag="Amazon Developer Hackathon",
          desc="Alexa+ MCP server for elder medication care — voice dose logging, double-dose guard, family alerts and multilingual digests.",
          stack=["TypeScript", "Bedrock", "Lambda", "DynamoDB", "SNS"]),
-    dict(slug="safetyeye", repo="safetyeye", name="SafetyEye", accent="#f59e0b", tag="INDUX 5.0 · AI",
+    dict(slug="safetyeye", shape="ico", repo="safetyeye", name="SafetyEye", accent="#f59e0b", tag="INDUX 5.0 · AI",
          desc="AI PPE & hazard monitor for worksites — helmet/vest detection, restricted zones, fall detection and multilingual alerts.",
          stack=["Python", "YOLO11", "FastAPI"]),
-    dict(slug="pinchplan", repo="pinchplan", name="PinchPlan", accent="#a78bfa", tag="Meta VR Start 2026",
+    dict(slug="pinchplan", shape="cube", repo="pinchplan", name="PinchPlan", accent="#a78bfa", tag="Meta VR Start 2026",
          desc="Hands-first mixed-reality focus desk for Meta Quest, built for the web with WebXR.",
          stack=["WebXR", "JavaScript"]),
-    dict(slug="questlog", repo="questlog", name="QuestLog", accent="#34d399", tag="RevenueCat Shipaton",
+    dict(slug="questlog", shape="dodeca", repo="questlog", name="QuestLog", accent="#34d399", tag="RevenueCat Shipaton",
          desc="Your gaming bucket list, gamified — with in-app subscriptions powered by RevenueCat.",
          stack=["TypeScript", "Expo", "RevenueCat"]),
-    dict(slug="societymitra", repo="societymitra", name="SocietyMitra", accent="#38bdf8", tag="Nebius × NVIDIA AI",
+    dict(slug="societymitra", shape="hexprism", repo="societymitra", name="SocietyMitra", accent="#38bdf8", tag="Nebius × NVIDIA AI",
          desc="AI co-secretary for housing societies — an agent built on NVIDIA Nemotron via Nebius Token Factory.",
          stack=["Python", "Nemotron", "Nebius", "Tavily"]),
 ]
@@ -160,7 +161,7 @@ def about(theme):
     o.append(f'<rect x="{rx - 24}" y="44" width="500" height="382" rx="18" fill="{t["card"]}" fill-opacity="{.55 if dark else .75}" stroke="{t["border"]}"/>')
     for i, (col, label, desc) in enumerate(ABOUT["points"]):
         y = 76 + i * 88
-        o.append(f'<g>{bob(5, 5, i * .5)}{cube(rx + 16, y, 16, col)}</g>')
+        o.append(f'<g>{bob(4, 5, i * .5)}' + solid(["cube", "octa", "ico", "dodeca"][i], rx + 16, y + 16, 17, shade(col, 1.5), shade(col, .55), 36, 9 + i, phase=i) + '</g>')
         o.append(f'<g>{enter(.2 + i * .15, 10)}<text x="{rx + 52}" y="{y + 16}" font-family="{FONT}" font-size="18" font-weight="700" fill="{t["fg"]}">{esc(label)}</text>')
         for j, line in enumerate(wrap(desc, 16, 390)):
             o.append(f'<text x="{rx + 52}" y="{y + 42 + j * 22}" font-family="{FONT}" font-size="16" fill="{t["muted"]}">{esc(line)}</text>')
@@ -177,9 +178,12 @@ def project(theme, p):
          f'<rect x="0" y="0" width="{W}" height="5" fill="{a}"/>',
          f'<rect x="0" y="0" width="{W}" height="5" fill="url(#bar)"/>']
     # 3D icon: big cube + small floating cube
-    o.append(f'<ellipse cx="68" cy="112" rx="34" ry="9" fill="#000" opacity="{.35 if dark else .12}"/>')
-    o.append(f'<g>{bob(3, 6, 0)}{cube(68, 40, 30, a, 30)}</g>')
-    o.append(f'<g>{bob(5, 3.2, .4)}{cube(104, 30, 11, shade(a, 1.15) if dark else a)}</g>')
+    o.append(f'<ellipse cx="72" cy="122" rx="40" ry="9" fill="{a}" opacity="{.35 if dark else .22}" filter="url(#sb)"/>')
+    o.append(f'<ellipse cx="72" cy="122" rx="24" ry="5" fill="#000" opacity="{.45 if dark else .15}" filter="url(#sb)"/>')
+    o.append(f'<defs><filter id="sb" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>')
+    o.append(f'<g>{bob(4, 6, 0)}' + solid(p["shape"], 72, 70, 40, shade(a, 1.5) if dark else shade(a, 1.3), shade(a, .55), 48, 14,
+                                         edge="#ffffff", edge_op=.4 if dark else .65) + '</g>')
+    o.append(f'<g>{bob(5, 3.2, .4)}' + solid("cube", 116, 34, 9, shade(a, 1.6), shade(a, .7), 24, 5, edge_op=.5) + '</g>')
     o.append(f'<text x="132" y="78" font-family="{FONT}" font-size="30" font-weight="800" letter-spacing="-.5" fill="{t["fg"]}">{esc(p["name"])}</text>')
     tag = p["tag"].upper()
     tw = text_w(tag, 12, 700) + 22
@@ -235,8 +239,9 @@ def cta(theme):
          f'<text x="56" y="124" font-family="{FONT}" font-size="36" font-weight="800" letter-spacing="-.6" fill="{t["fg"]}">Let’s build something together.</text>',
          f'<text x="56" y="162" font-family="{FONT}" font-size="18" fill="{t["muted"]}">Open to backend, full-stack and AI engineering roles · Thane, India (IST)</text>']
     # decorative cube cluster
-    for i, (dx, dy, s, c) in enumerate([(1000, 60, 34, "#6366f1"), (1068, 96, 24, "#22d3ee"), (946, 112, 20, "#a78bfa")]):
-        o.append(f'<g>{bob(5, 5, i * .7)}{cube(dx, dy, s, c)}</g>')
+    for i, (dx, dy, r, c, shp, d) in enumerate([(1010, 104, 58, "#6366f1", "gem", 16), (1104, 136, 28, "#22d3ee", "cube", 10),
+                                                (926, 142, 24, "#a78bfa", "octa", 12)]):
+        o.append(f'<g>{bob(5, 5, i * .7)}' + solid(shp, dx, dy, r, shade(c, 1.5), shade(c, .5), 48, d, phase=i) + '</g>')
     return frame(theme, W, H, (0.85, 0.5), "\n".join(o), "Let's build something together")
 
 
@@ -264,8 +269,9 @@ def header(theme, kicker, title, sub):
     o = [eyebrow(theme, 56, 66, kicker),
          f'<text x="56" y="112" font-family="{FONT}" font-size="34" font-weight="800" letter-spacing="-.6" fill="{t["fg"]}">{esc(title)}</text>',
          f'<text x="56" y="144" font-family="{FONT}" font-size="17" fill="{t["muted"]}">{esc(sub)}</text>']
-    for i, (dx, dy, s, c) in enumerate([(1060, 50, 26, "#fb7185"), (1110, 76, 18, "#f59e0b"), (1012, 82, 16, "#34d399")]):
-        o.append(f'<g>{bob(5, 5, i * .6)}{cube(dx, dy, s, c)}</g>')
+    for i, (dx, dy, r, c, shp, d) in enumerate([(1070, 82, 40, "#fb7185", "ico", 14), (1140, 104, 22, "#f59e0b", "cube", 9),
+                                                (1002, 108, 20, "#34d399", "octa", 11)]):
+        o.append(f'<g>{bob(5, 5, i * .6)}' + solid(shp, dx, dy, r, shade(c, 1.5), shade(c, .55), 48, d, phase=i) + '</g>')
     return frame(theme, W, H, (0.9, 0.5), "\n".join(o), title)
 
 

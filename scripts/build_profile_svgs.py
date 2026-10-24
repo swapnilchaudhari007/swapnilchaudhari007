@@ -155,6 +155,11 @@ def hero(theme):
          '<mask id="m"><rect width="100%" height="100%" fill="url(#fade)"/></mask>',
          f'<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>',
          '<clipPath id="r"><rect width="1200" height="380" rx="20"/></clipPath>',
+         '<linearGradient id="ff" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".25" stop-color="#fff" stop-opacity="1"/></linearGradient>',
+         '<mask id="floorfade"><rect x="600" width="600" height="380" fill="url(#ff)"/></mask>',
+         f'<linearGradient id="ring" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{t["accent2"]}" stop-opacity=".1"/><stop offset=".5" stop-color="{t["accent"]}"/><stop offset="1" stop-color="{t["accent2"]}" stop-opacity=".1"/></linearGradient>',
+         '<radialGradient id="halo" cx=".38" cy=".3" r=".6"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></radialGradient>',
+         '<filter id="soft2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>',
          shine_gradient("shA", 5, 1.0, .55), shine_gradient("shB", 5, 1.25, .35), shine_gradient("shC", 5, 1.5, .25),
          "</defs>",
          '<g clip-path="url(#r)">',
@@ -163,26 +168,44 @@ def hero(theme):
          '<circle cx="930" cy="190" r="260" fill="url(#glow)"/>',
          '<circle cx="1080" cy="320" r="180" fill="url(#glow2)"/>',
          ]
-    # --- 3D stack (decorative architecture)
-    cx, a, th = 930, 150, 16
-    edge = "rgba(255,255,255,0.45)" if dark else "rgba(255,255,255,0.9)"
-    o.append(f'<ellipse cx="{cx}" cy="335" rx="190" ry="26" fill="{t["shadow"]}" opacity="{.55 if dark else .18}" filter="url(#soft)"/>')
-    o.append(iso_slab(cx, 262, a, th, "url(#topC)", "#312e81", "#164e63", edge, anim=bob(7, 6, 1.2), shine="shC"))
-    o.append(iso_slab(cx, 196, a, th, "url(#topB)", "#3730a3", "#155e75", edge, anim=bob(7, 6, .6), shine="shB"))
-    # skyline of small cubes on top slab
-    cubes = []
-    s = 22
-    heights = [[18, 34, 22], [44, 62, 30], [26, 40, 54]]
-    cols = ["#e0e7ff", "#a5f3fc", "#c7d2fe"]
-    for i in range(3):
-        for j in range(3):
-            # grid on the top face: i along +x/+y, j along -x/+y
-            gx = cx + (i - j) * s * 1.25
-            gy = 130 - a / 2 + 30 + (i + j) * s * 0.62
-            cubes.append((gy, gx, heights[i][j], cols[(i + j) % 3]))
-    sky = "".join(f'<g>{bob(4, 2.8, .9 + k * .23)}{iso_box(gx, gy - 4, 16, h, c)}</g>'
-                  for k, (gy, gx, h, c) in enumerate(sorted(cubes)))
-    o.append(iso_slab(cx, 130, a, th, "url(#topA)", "#4338ca", "#0e7490", edge, extra=sky, anim=bob(7, 6, 0), shine="shA"))
+    # --- 3D scene: perspective grid floor + rotating crystal + orbiting cubes
+    from poly3d import solid, orbit
+    cx, cy = 935, 168
+    gcol = t["accent"]
+    floor = ['<g opacity="%.2f">' % (.55 if dark else .45)]
+    hy = 250  # horizon
+    for k in range(-9, 10):  # rays to the vanishing point
+        floor.append(f'<line x1="{cx}" y1="{hy}" x2="{cx + k * 120}" y2="{H + 40}" stroke="{gcol}" stroke-opacity=".35" stroke-width="1"/>')
+    for k in range(1, 9):  # horizontal lines, spaced in perspective and scrolling toward the viewer
+        y0 = hy + (H + 40 - hy) * (k / 8) ** 2
+        y1 = hy + (H + 40 - hy) * ((k + 1) / 8) ** 2
+        floor.append(f'<line x1="600" x2="1200" y1="{y0:.1f}" y2="{y0:.1f}" stroke="{gcol}" stroke-opacity="{.12 + .05 * k:.2f}">'
+                     f'<animate attributeName="y1" values="{y0:.1f};{y1:.1f}" dur="2.4s" repeatCount="indefinite"/>'
+                     f'<animate attributeName="y2" values="{y0:.1f};{y1:.1f}" dur="2.4s" repeatCount="indefinite"/></line>')
+    floor.append('</g>')
+    o.append('<g mask="url(#floorfade)">' + "".join(floor) + '</g>')
+    o.append(f'<line x1="600" x2="1200" y1="{hy}" y2="{hy}" stroke="{gcol}" stroke-opacity=".6"/>')
+    # ground glow + shadow under the crystal
+    o.append(f'<ellipse cx="{cx}" cy="300" rx="150" ry="22" fill="{t["accent"]}" opacity="{.35 if dark else .25}" filter="url(#soft)"/>')
+    o.append(f'<ellipse cx="{cx}" cy="300" rx="70" ry="9" fill="{t["shadow"]}" opacity="{.6 if dark else .2}" filter="url(#soft2)">'
+             '<animate attributeName="rx" values="70;58;70" dur="6s" repeatCount="indefinite"/></ellipse>')
+    # orbit ring (back half), back-orbiting cubes
+    rx, ry = 190, 46
+    ring = f'stroke="url(#ring)" stroke-width="1.6" fill="none"'
+    o.append(f'<path d="M{cx - rx},{cy + 20} A{rx},{ry} 0 0,1 {cx + rx},{cy + 20}" {ring} opacity=".55"/>')
+    bodies = [(solid("cube", 0, 0, 15, "#a5f3fc", "#0891b2", 24, 4, edge_op=.5), 14, 0),
+              (solid("octa", 0, 0, 13, "#f5d0fe", "#a21caf", 24, 5, edge_op=.5), 14, 4.67),
+              (solid("cube", 0, 0, 11, "#fde68a", "#d97706", 24, 3.5, edge_op=.5), 14, 9.33)]
+    for body, d, b0 in bodies:
+        o.append(orbit(cx, cy + 20, rx, ry, d, -b0, body, "back"))
+    # the crystal
+    o.append(f'<g>{bob(8, 6, 0)}' + solid("ico", cx, cy, 98, "#67e8f9", "#4f46e5", 72, 18,
+                                          edge="#ffffff", edge_op=.45 if dark else .7) + '</g>')
+    o.append(f'<g>{bob(8, 6, 0)}<circle cx="{cx}" cy="{cy}" r="110" fill="url(#halo)"/></g>')
+    # front half of ring + front-orbiting cubes
+    o.append(f'<path d="M{cx + rx},{cy + 20} A{rx},{ry} 0 0,1 {cx - rx},{cy + 20}" {ring}/>')
+    for body, d, b0 in bodies:
+        o.append(orbit(cx, cy + 20, rx, ry, d, -b0, body, "front"))
     # rising particles
     for k, (px, py, r, col, dur, b0) in enumerate([(780, 300, 2.2, "#22d3ee", 5.5, 0), (840, 330, 1.6, "#a5b4fc", 6.5, 1.4),
                                                    (1030, 320, 2, "#67e8f9", 6, .8), (1095, 280, 1.5, "#c7d2fe", 7, 2.2),
@@ -197,7 +220,11 @@ def hero(theme):
         f'<circle cx="{x + 18}" cy="85" r="4.5" fill="#22c55e" opacity=".5"><animate attributeName="r" values="4.5;11;11" keyTimes="0;.6;1" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;0" keyTimes="0;.6;1" dur="2.4s" repeatCount="indefinite"/></circle>'
         f'<circle cx="{x + 18}" cy="85" r="4.5" fill="#22c55e"/>'
         f'<text x="{x + 32}" y="90" font-family="{FONT}" font-size="13" font-weight="600" letter-spacing="1.4" fill="{t["muted"]}">SENIOR SOFTWARE DEVELOPER</text></g>',
-        f'<g>{enter(.25)}<text x="{x - 3}" y="168" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" fill="url(#name)">Swapnil Chaudhari</text></g>',
+        f'<g>{enter(.25)}'
+        + "".join(f'<text x="{x - 3 + k * .9:.1f}" y="{168 + k * 1.1:.1f}" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" '
+                  f'fill="{shade(t["accent2"], .22 + .05 * (6 - k)) if dark else ("#a5b4fc" if k > 3 else "#c7d2fe")}">Swapnil Chaudhari</text>' for k in range(7 if dark else 5, 0, -1))
+        + f'<text x="{x - 3}" y="168" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" fill="url(#name)">Swapnil Chaudhari</text>'
+        f'<text x="{x - 3}" y="168" font-family="{FONT}" font-size="60" font-weight="800" letter-spacing="-1.5" fill="url(#shA)">Swapnil Chaudhari</text></g>',
         f'<g>{enter(.4)}<text x="{x}" y="212" font-family="{FONT}" font-size="22" fill="{t["muted"]}">Backend engineer shipping <tspan fill="{t["accent"]}" font-weight="600">AI</tspan> &amp; <tspan fill="{t["accent2"]}" font-weight="600">cloud</tspan> products.</text></g>',
     ]
     chips = ["C# / .NET", "SQL", "Python", "AWS", "LLMs · MCP"]
