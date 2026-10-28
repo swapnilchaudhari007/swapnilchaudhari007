@@ -139,3 +139,9 @@ def about(theme):
 def build_all(out_dir):
     ps.project, ps.header, ps.cta, ps.stack, ps.about = project, header, cta, stack, about
     ps.build_all(out_dir)
+    try:  # contribution snake (re-reads the same contribution data the hero uses)
+        from build_profile_svgs import load
+        import snake
+        snake.build(load(), out_dir)
+    except Exception as e:  # never let the snake break the rest of the refresh
+        print("snake skipped:", e)
