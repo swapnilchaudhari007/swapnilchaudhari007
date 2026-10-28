@@ -98,9 +98,25 @@
 <div align="center">
 
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg" />
+  <img alt="GitHub activity — streaks and weekly contributions" src="assets/stats-dark.svg" width="100%" />
+</picture>
+
+<br /><br />
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/contrib-3d-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/contrib-3d-light.svg" />
   <img alt="3D contribution graph" src="assets/contrib-3d-dark.svg" width="100%" />
+</picture>
+
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/snake-light.svg" />
+  <img alt="Contribution snake eating the activity graph" src="assets/snake-dark.svg" width="100%" />
 </picture>
 
 <br /><br />
