@@ -362,7 +362,7 @@ def main():
         open(os.path.join(OUT, f"hero-{th}.svg"), "w").write(hero(th))
         open(os.path.join(OUT, f"contrib-3d-{th}.svg"), "w").write(contrib(th, days, st))
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    from profile_sections import build_all
+    from fx3d import build_all
     build_all(OUT)
     print(json.dumps({k: str(v) for k, v in st.items()}))
 
