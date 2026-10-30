@@ -8,7 +8,7 @@
 
 <div align="center">
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+5+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=2C9FDB&center=true&vCenter=true&width=600&lines=Backend+engineer+%7C+C%23+%2F+ASP.NET+%2F+SQL;Building+AI-powered+apps+on+AWS;Hackathon+builder+%E2%80%94+9+projects+shipped+in+2026;Based+in+Thane%2C+India" alt="Typing SVG" /></a>
 
 <a href="https://www.linkedin.com/in/swapnil-chaudhari-533a25105/">
 <picture>
@@ -85,6 +85,19 @@
 
 </div>
 
+<div align="center">
+
+  **More 2026 builds**
+
+  | Project | What it does | Built for |
+  |---|---|---|
+  | [Fairshake](https://github.com/swapnilchaudhari007/fairshake) | AI checks the work line by line; PayPal releases payment only for what was delivered | PayPal AI Hackathon 2026 |
+  | [Subtitled](https://github.com/swapnilchaudhari007/subtitled) | Qloo-powered agent that turns your taste into a 4-week language immersion plan | Qloo Agentic Hackathon |
+  | [Kagaz](https://github.com/swapnilchaudhari007/kagaz) | Accessible document checklist and expiry tracker for government office visits | Hyperbloom October UI/UX |
+  | [DeadlineDeck](https://github.com/swapnilchaudhari007/devpost-deadline-tracker) | Every Devpost hackathon you have entered, sorted by what is due next | Build With AI: Basics |
+
+  </div>
+  
 <br />
 
 <picture>
