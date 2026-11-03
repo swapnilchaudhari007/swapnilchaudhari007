@@ -31,6 +31,12 @@
 
 <br />
 
+**🔨 Currently:** Senior Software Developer at Bajaj Group by day; shipping AI, MCP and WebXR hackathon builds on AWS after hours.
+
+**🎯 Open to:** backend and AI engineering roles, and hackathon team-ups.
+
+**💬 Ask me about:** C# / ASP.NET, MS-SQL query tuning, MCP servers, WebXR on Meta Quest.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/about-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="assets/about-light.svg" />
