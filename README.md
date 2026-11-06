@@ -88,6 +88,13 @@
   <img alt="SocietyMitra" src="assets/project-societymitra-dark.svg" width="49%" />
 </picture>
 </a>
+<a href="https://hack2skill.com/event/watchfacedesignchallenge2026">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/project-kaal-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/project-kaal-light.svg" />
+  <img alt="Kaal" src="assets/project-kaal-dark.svg" width="49%" />
+</picture>
+</a>
 
 </div>
 
