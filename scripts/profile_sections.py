@@ -36,6 +36,9 @@ PROJECTS = [
     dict(slug="societymitra", shape="hexprism", repo="societymitra", name="SocietyMitra", accent="#38bdf8", tag="Nebius × NVIDIA AI",
          desc="AI co-secretary for housing societies — an agent built on NVIDIA Nemotron via Nebius Token Factory.",
          stack=["Python", "Nemotron", "Nebius", "Tavily"]),
+    dict(slug="kaal", shape="gem", repo=None, name="Kaal", accent="#e879f9", tag="Titan Watch Face 2026",
+         desc="Kaal (Hindi for time) — an original minimalist analog-digital hybrid watch face, in progress for Titan's design challenge.",
+         stack=["Watch UI", "In progress"]),
 ]
 
 STACK = [
@@ -282,7 +285,7 @@ def build_all(out_dir):
             f"about-{th}.svg": about(th),
             f"stack-{th}.svg": stack(th),
             f"cta-{th}.svg": cta(th),
-            f"projects-header-{th}.svg": header(th, "Featured projects", "Things I've shipped", "Five production-style builds from 2026 hackathons — tap a card to open the repo."),
+            f"projects-header-{th}.svg": header(th, "Featured projects", "Things I've shipped", "Six builds from 2026 hackathons — tap a card to open it."),
             f"btn-linkedin-{th}.svg": button(th, "LinkedIn", "#0A66C2"),
             f"btn-email-{th}.svg": button(th, "Email", "#4f46e5"),
         }
