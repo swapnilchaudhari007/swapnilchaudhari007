@@ -102,6 +102,8 @@
   | [Kagaz](https://github.com/swapnilchaudhari007/kagaz) | Accessible document checklist and expiry tracker for government office visits | Hyperbloom October UI/UX |
   | [DeadlineDeck](https://github.com/swapnilchaudhari007/devpost-deadline-tracker) | Every Devpost hackathon you have entered, sorted by what is due next | Build With AI: Basics |
 
+🛠️ **Now building (Nov 2026):** an original watch face for the Titan Watch Face Design Challenge · CareCircle, solo, for Startup Buildathon India
+
   </div>
   
 <br />
