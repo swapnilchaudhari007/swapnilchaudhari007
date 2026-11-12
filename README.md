@@ -35,7 +35,7 @@
 
 **🎯 Open to:** backend and AI engineering roles, and hackathon team-ups.
 
-**💬 Ask me about:** C# / ASP.NET, MS-SQL query tuning, MCP servers, WebXR on Meta Quest.
+**💬 Ask me about:** C# / ASP.NET, MS-SQL query tuning, MCP servers, WebXR on Meta Quest, Atlassian Forge apps.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/about-dark.svg" />
